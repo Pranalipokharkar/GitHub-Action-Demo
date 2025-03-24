@@ -1,19 +1,19 @@
 name: GitHub Actions Variable Demo
 
 on:  
-    push:
-    branches: [ "main" ] 
-  workflow_dispatch:
+  push:
+    branches: [ "main" ]  # ✅ Correct indentation
+  workflow_dispatch:  # ✅ Now correctly aligned
 
 jobs:
   example-job:
     runs-on: ubuntu-latest
     env:
-      MY_VAR: "Hello"  # Global variable for the job
+      MY_VAR: "Hello"  # ✅ Indented correctly
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # ✅ 2-space indentation per level
 
       - name: Correct - Using YAML Expression
         if: ${{ env.MY_VAR == 'Hello' }}  # ✅ Works in YAML
