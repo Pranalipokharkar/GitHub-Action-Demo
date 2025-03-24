@@ -1,0 +1,25 @@
+name: GitHub Actions Variable Demo
+
+on:  
+  push:
+    branches: [ "main" ]  
+  workflow_dispatch:  
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    env:
+      MY_VAR: "Hello"  
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  
+
+      - name: Correct - Using YAML Expression
+        if: ${{ env.MY_VAR == 'Hello' }}  
+        run: echo "YAML expression is correct!"  
+
+      - name: Correct - Using Shell Variable
+        run: echo "Shell script variable: $MY_VAR"
+       
+
