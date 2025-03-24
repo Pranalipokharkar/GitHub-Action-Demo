@@ -12,13 +12,32 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, $APP_ENV
 
+  default-variable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: default-var demo
+        run: echo "Name of Github Repo- $GITHUB_REPOSITORY"
+
   configuration-variable:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: configuration-var demo
-        run: echo Hello, ${{ vars.CONFIGURATION_VAR }}     
-
+        run: echo Hello, ${{ vars.CONFIGURATION_VAR }} 
+      
+  secret-variable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: secret-var demo
+        run: echo Hello, ${{ secrets.MY_SECRET }}     
+  context-variable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: context-var demo
+        run: echo Hello, ${{ github.actor }}
 
 
 
